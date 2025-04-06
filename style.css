@@ -1,0 +1,265 @@
+/* style.css - Bet365 Inspired Theme (Improved Contrast) */
+
+/* --- Base Styles & Dark Theme --- */
+body {
+    color: #F0F0F0; /* Brighter default text color */
+    background-color: #3cad95; /* Bet365-like dark charcoal */
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Common fonts */
+}
+
+/* Target the main Streamlit app container for consistent background */
+.stApp {
+    background-color: #3cad95;
+}
+
+/* --- Headers --- */
+h1, h2, h3, h4, h5, h6 {
+    color: #FFFFFF; /* White headers */
+    font-weight: 500; /* Slightly less bold */
+}
+h1 { font-size: 2em; margin-bottom: 0.6em;}
+h2 { font-size: 1.6em; margin-bottom: 0.5em;}
+h3 { font-size: 1.3em; margin-bottom: 0.4em;}
+
+
+/* --- Explicitly Style Markdown Text --- */
+[data-testid="stMarkdownContainer"] p,
+.stMarkdown p { /* Target common markdown paragraph elements */
+    color: #F0F0F0 !important; /* Use the bright default color, !important if needed */
+    line-height: 1.6; /* Improve readability */
+}
+
+
+/* --- Sidebar --- */
+[data-testid="stSidebar"] {
+    background-color: #357a6f; /* Slightly lighter grey for sidebar */
+    border-right: 1px solid #444444;
+}
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,
+[data-testid="stSidebar"] h4 {
+    color: #F0F0F0;
+    font-weight: 500;
+}
+/* Sidebar labels and text */
+[data-testid="stSidebar"] .stMarkdown p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+[data-testid="stSidebar"] [data-testid="stRadio"] label p {
+     color: #CCCCCC !important; /* Keep sidebar text slightly less bright than main content */
+}
+
+
+/* --- Buttons --- */
+[data-testid="stButton"] button {
+    background-color: #1E891E; /* Bet365 Green Accent */
+    color: #FFFFFF;
+    border: 1px solid #1E891E; /* Green border */
+    border-radius: 4px;
+    padding: 0.5em 1.2em; /* Slightly wider padding */
+    font-weight: 500; /* Standard weight */
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+[data-testid="stButton"] button:hover {
+    background-color: #176d17; /* Darker green on hover */
+    border-color: #176d17;
+    color: #FFFFFF;
+}
+[data-testid="stButton"] button:focus {
+     box-shadow: 0 0 0 2px rgba(30, 137, 30, 0.5); /* Subtle green focus ring */
+     outline: none;
+}
+/* Back button styling */
+/* Targeting via text is fragile, prefer specific keys or component hierarchy if possible */
+[data-testid="stButton"] button:contains("⬅️ Back") {
+     background-color: #bdb223; /* Bet365 Yellow Accent */
+     border-color: #d81717;
+}
+[data-testid="stButton"] button:contains("⬅️ Back"):hover {
+     background-color: #bfd834;
+     border-color: #666666;
+}
+
+
+/* --- Tabs --- */
+[data-testid="stTabs"] {
+    border-bottom: 2px solid #444444; /* Slightly thicker border */
+    margin-bottom: 1.2em;
+}
+[data-testid="stTabs"] button {
+    color: #AAAAAA; /* Muted grey for inactive tabs */
+    padding: 0.8em 1.5em; /* More padding */
+    border: none;
+    border-bottom: 3px solid transparent;
+    background-color: transparent;
+    font-weight: 500;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+[data-testid="stTabs"] button:hover {
+    color: #CCCCCC;
+}
+/* Active tab style */
+[data-testid="stTabs"] button[aria-selected="true"] {
+    color: #FFFFFF; /* White active tab */
+    border-bottom: 3px solid #1E891E; /* Green accent underline */
+    font-weight: 600; /* Bolder active tab */
+}
+
+
+/* --- DataFrames (st.dataframe) --- */
+[data-testid="stDataFrame"] {
+    border: 1px solid #444444;
+    border-radius: 3px; /* Slightly less rounded */
+    overflow: hidden;
+    background-color: #333333; /* Match sidebar bg */
+}
+/* Table Headers */
+[data-testid="stDataFrame"] thead th {
+    background-color: #3c3c3c; /* Slightly darker header */
+    color: #df1212; /* Brighter header text */
+    font-weight: 500;
+    text-align: left;
+    padding: 0.8em 1em; /* Adjust padding */
+    border-bottom: 1px solid #444444;
+}
+/* Table Cells */
+[data-testid="stDataFrame"] tbody td {
+    color: #d41212; /* Match bright body text */
+    padding: 0.7em 1em;
+    border-bottom: 1px solid #3c3c3c; /* Row separator matches header bg */
+    vertical-align: middle;
+}
+/* Remove last row border */
+[data-testid="stDataFrame"] tbody tr:last-child td {
+    border-bottom: none;
+}
+/* Highlighting applied via Styler */
+.dataframe .highlight { /* Targeting class possibly set by Styler */
+     background-color: rgba(30, 137, 30, 0.2); /* Lighter green highlight */
+     /* color: #E1E1E1; */ /* Keep text color readable on highlight */
+}
+/* Style for Avg/Highest rows (if using markdown bold) */
+[data-testid="stDataFrame"] tbody td strong {
+     font-weight: 600;
+     color: #FFFFFF; /* Ensure bolded text is bright white */
+}
+
+
+/* --- Expanders --- */
+[data-testid="stExpander"] {
+    border: 1px solid #444444;
+    border-radius: 3px;
+    margin-bottom: 0.5em;
+    background-color: #333333;
+}
+[data-testid="stExpander"] summary {
+    color: #db1919; /* Brighter summary text */
+    padding: 0.7em 1em;
+    font-weight: 500;
+    border-radius: 3px;
+}
+[data-testid="stExpander"] summary:hover {
+    background-color: #3c3c3c;
+}
+[data-testid="stExpander"] [data-testid="stDetails"] {
+     padding: 0.5em 1em 0.8em 1em;
+     background-color: #333333;
+     border-top: 1px solid #444444;
+}
+
+
+/* --- Selectbox / Multiselect / Radio --- */
+[data-testid="stSelectbox"], [data-testid="stMultiselect"], [data-testid="stRadio"] {
+     margin-bottom: 0.8em; /* More space */
+}
+/* Labels */
+[data-testid="stSelectbox"] label,
+[data-testid="stMultiselect"] label,
+[data-testid="stRadio"] label {
+     color: #CCCCCC; /* Match sidebar text */
+     font-size: 0.9em; /* Slightly smaller labels */
+     margin-bottom: 0.3em;
+     font-weight: 500;
+}
+/* Input Widgets */
+.stTextInput input,
+div[data-baseweb="select"] > div, /* Targets Selectbox/Multiselect inner div */
+div[data-baseweb="input"] > div input /* Targets input within components */
+{
+    background-color: #3c3c3c !important; /* Match table header bg */
+    color: #F0F0F0 !important; /* Brighter input text */
+    border: 1px solid #555555 !important; /* Slightly more visible border */
+    border-radius: 3px !important;
+}
+/* Dropdown Menus */
+div[data-baseweb="popover"] ul[role="listbox"] {
+     background-color: #3c3c3c;
+     border: 1px solid #555555;
+     color: #F0F0F0; /* Brighter dropdown text */
+}
+div[data-baseweb="popover"] ul[role="listbox"] li[aria-selected="true"] {
+    background-color: #1E891E; /* Green accent for selection */
+    color: #FFFFFF;
+}
+div[data-baseweb="popover"] ul[role="listbox"] li:hover {
+    background-color: #4a4a4a; /* Hover effect */
+}
+/* Multiselect Pills */
+.stMultiSelect div[data-baseweb="tag"] {
+    background-color: #1E891E !important; /* Green pills */
+    color: #FFFFFF !important;
+    border-radius: 3px !important;
+    font-weight: 500;
+}
+.stMultiSelect div[data-baseweb="tag"] span[role="button"] { /* The 'x' */
+     color: #FFFFFF !important;
+}
+
+
+/* --- Dividers --- */
+[data-testid="stDivider"] {
+     margin: 1em 0; /* More vertical space */
+     border-top: 1px solid #444444;
+}
+
+
+/* --- Links --- */
+a {
+    color: #1E891E; /* Green links */
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- Captions / Help Text --- */
+[data-testid="stCaptionContainer"], .caption, .stHelp {
+     color: #a0a0a0; /* Slightly darker grey for tertiary text */
+     font-size: 0.9em;
+}
+
+/* --- Info/Warning/Error Boxes --- */
+[data-testid="stAlert"] {
+    border-radius: 3px;
+    border: 1px solid #444444;
+    background-color: #333333; /* Match sidebar */
+    color: #F0F0F0; /* Ensure text inside alerts is bright */
+}
+[data-testid="stAlert"][data-baseweb="alert"][role="alert"] > div:first-child {
+    padding-top: 0.8rem !important; /* Align icon better */
+}
+/* Add subtle left border color for emphasis */
+[data-testid="stAlert"][kind="info"] { border-left: 3px solid #00AFF0; } /* Use a distinct blue for info */
+[data-testid="stAlert"][kind="warning"] { border-left: 3px solid #FFA726; } /* Amber for warning */
+[data-testid="stAlert"][kind="error"] { border-left: 3px solid #EF5350; } /* Red for error */
+[data-testid="stAlert"][kind="success"] { border-left: 3px solid #1E891E; } /* Green for success */
+
+
+/* Add some padding to the main content area */
+.main .block-container {
+     padding-top: 2rem;
+     padding-left: 2rem;
+     padding-right: 2rem;
+     padding-bottom: 2rem;
+}
